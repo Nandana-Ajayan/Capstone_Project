@@ -83,4 +83,48 @@ plt.title('Confusion matrix', y=1.1)
 plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
 ```
-
+### training using decision tree
+```python
+clf = DecisionTreeClassifier(criterion="entropy")
+```
+```python
+clf.fit(X_train_balanced, y_train_balanced)
+```
+```python
+y_pred1 = clf.predict(X_test)
+```
+```python
+print('Training set score: {:.4f}'.format(clf.score(X_train_balanced, y_train_balanced)))
+print('Test set score: {:.4f}'.format(clf.score(X_test, y_test)))
+```
+```python
+plt.figure(figsize=(12,8))
+from sklearn import tree
+tree.plot_tree(clf.fit(X_train_balanced, y_train_balanced))
+```
+```python
+cnf_matrix=confusion_matrix(y_test, y_pred1)
+```
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+import pandas as pd
+%matplotlib inline
+class_names=[0,1] # name  of classes
+fig, ax = plt.subplots()
+tick_marks = np.arange(len(class_names))
+plt.xticks(tick_marks, class_names)
+plt.yticks(tick_marks, class_names)
+# create heatmap
+sns.heatmap(pd.DataFrame(cnf_matrix), annot=True, cmap="YlGnBu" ,fmt='g')
+ax.xaxis.set_label_position("top")
+plt.tight_layout()
+plt.title('Confusion matrix', y=1.1)
+plt.ylabel('Actual label')
+plt.xlabel('Predicted label')
+```
+```python
+print("\nClassification Report of decision tree(entropy):")
+print(classification_report(y_test, y_pred1))
+```
