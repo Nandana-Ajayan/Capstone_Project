@@ -128,3 +128,7 @@ plt.xlabel('Predicted label')
 print("\nClassification Report of decision tree(entropy):")
 print(classification_report(y_test, y_pred1))
 ```
+```python
+d_accuracy = accuracy_score(y_test, y_pred1)
+print("rf_classifier Accuracy:", d_accuracy)
+```
