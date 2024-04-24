@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix,accuracy_score,precision_score
 from sklearn import metrics
+from sklearn.svm import SVC
 ```
 ```python
 
@@ -38,10 +39,6 @@ print(y_train.value_counts())
 ```pyton
 smote = SMOTE(random_state=42)
 X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
-```
-```pyton
-print("\nClass distribution after SMOTE:")
-print(pd.Series(y_resampled).value_counts())
 ```
 ```pyton
 print("\nClass distribution after SMOTE:")
@@ -97,6 +94,8 @@ plt.xlabel('Predicted label')
 ```
 ### Calssification report of Log_regression
 ```python
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
 ```
 ### training using Rf classifier
 ```python
@@ -130,10 +129,6 @@ plt.xlabel('Predicted label')
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred))
 ```
-
-
-
-
 ### training using decision tree
 ```python
 clf = DecisionTreeClassifier(criterion="entropy")
@@ -182,4 +177,22 @@ print(classification_report(y_test, y_pred1))
 ```python
 d_accuracy = accuracy_score(y_test, y_pred1)
 print("rf_classifier Accuracy:", d_accuracy)
+```
+### training using SVM
+```python
+svm_classifier = SVC(kernel='linear', random_state=42)
+```
+```python
+svm_classifier.fit(X_train_balanced, y_train_balanced)
+```
+```python
+y_pred2 = svm_classifier.predict(X_test)
+conf_matrix = confusion_matrix(y_test, y_pred2)
+print("Confusion Matrix:")
+print(conf_matrix)
+```
+### classification report
+```pyhton
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred2))
 ```
