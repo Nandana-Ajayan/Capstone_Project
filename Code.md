@@ -184,7 +184,7 @@ print(classification_report(y_test, y_pred1))
 ```
 ```python
 d_accuracy = accuracy_score(y_test, y_pred1)
-print("rf_classifier Accuracy:", d_accuracy)
+print("decision tree Accuracy:", d_accuracy)
 ```
 ### training using SVM
 ```python
