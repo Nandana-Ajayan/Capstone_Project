@@ -44,7 +44,7 @@ X_train_balanced, y_train_balanced = smote.fit_resample(X_train, y_train)
 ```
 ```pyton
 print("\nClass distribution after SMOTE:")
-print(pd.Series(y_resampled).value_counts())
+print(pd.Series(y_train_balanced).value_counts())
 ```
 ### Training model using logistic regression
 ```pyton
@@ -105,10 +105,18 @@ rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_classifier.fit(X_train_balanced, y_train_balanced)
 ```
 ```python
-y_pred = rf_classifier.predict(X_test)
+y_pred3 = rf_classifier.predict(X_test)
 ```python
 print("Confusion Matrix:")
-print(confusion_matrix(y_test, y_pred))
+conf_mat=confusion_matrix(y_test, y_pred3)
+print(conf_mat)
+```
+### Classification report of rf calssifier
+```python
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred3))
+```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -126,10 +134,6 @@ plt.tight_layout()
 plt.title('Confusion matrix', y=1.1)
 plt.ylabel('Actual label')
 plt.xlabel('Predicted label')
-### Classification report of rf calssifier
-```python
-print("\nClassification Report:")
-print(classification_report(y_test, y_pred))
 ```
 ### training using decision tree
 ```python
