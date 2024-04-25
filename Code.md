@@ -137,6 +137,8 @@ plt.xlabel('Predicted label')
 ```
 ### training using decision tree
 ```python
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
 clf = DecisionTreeClassifier(criterion="entropy")
 ```
 ```python
@@ -151,7 +153,7 @@ print('Test set score: {:.4f}'.format(clf.score(X_test, y_test)))
 ```
 ```python
 plt.figure(figsize=(12,8))
-from sklearn import tree
+
 tree.plot_tree(clf.fit(X_train_balanced, y_train_balanced))
 ```
 ```python
