@@ -102,7 +102,7 @@ print(classification_report(y_test, y_pred))
 ### training using Rf classifier
 ```python
 rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-rf_classifier.fit(X_train_balanced, y_train_balanced)
+rf_classifier.fit(X_resampled, y_resampled)
 ```
 ```python
 y_pred = rf_classifier.predict(X_test)
