@@ -52,7 +52,7 @@ from sklearn.linear_model import LogisticRegression
 ```
 ```pyton
 logreg = LogisticRegression(max_iter=1000, random_state=42)
-logreg.fit(X_resampled, y_resampled)
+logreg.fit(X_train_balanced, y_train_balanced)
 ```
 ```python
 y_pred = logreg.predict(X_test)
