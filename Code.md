@@ -10,6 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix,accuracy_score,precision_score
 from sklearn import metrics
 from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
 ```
 ```python
 
@@ -22,13 +23,14 @@ X = df.drop('Class', axis=1)
 y = df['Class']
 ```
 ```python
-nan_indices = y_train.index[y_train.isnull()]
-X_train_cleaned = X_train.drop(index=nan_indices)
-y_train_cleaned = y_train.drop(index=nan_indices)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
 
 ```python
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+nan_indices = y_train.index[y_train.isnull()]
+X_train_cleaned = X_train.drop(index=nan_indices)
+y_train_cleaned = y_train.drop(index=nan_indices)
+
 ```
 ```python
 print("Class distribution before SMOTE:")
