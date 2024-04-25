@@ -40,7 +40,7 @@ print(y_train.value_counts())
 
 ```pyton
 smote = SMOTE(random_state=42)
-X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
+X_train_balanced, y_train_balanced = smote.fit_resample(X_train, y_train)
 ```
 ```pyton
 print("\nClass distribution after SMOTE:")
@@ -102,7 +102,7 @@ print(classification_report(y_test, y_pred))
 ### training using Rf classifier
 ```python
 rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-rf_classifier.fit(X_resampled, y_resampled)
+rf_classifier.fit(X_train_balanced, y_train_balanced)
 ```
 ```python
 y_pred = rf_classifier.predict(X_test)
